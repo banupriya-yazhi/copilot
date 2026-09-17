@@ -114,6 +114,21 @@ body {
 
 .theme-toggle:hover { background: var(--hover-wash); color: var(--text-primary); }
 
+.topbar-actions { display: flex; align-items: center; gap: 8px; }
+
+.sign-out {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.sign-out:hover { background: var(--hover-wash); color: var(--text-primary); }
+
 /* ---------- layout ---------- */
 
 .page {
@@ -261,5 +276,6 @@ body {
 
 @media (max-width: 560px) {
   .nav { display: none; }
+  .topbar-actions { margin-left: auto; }  /* .nav normally does the pushing */
   .stat-value { font-size: 24px; }
 }
