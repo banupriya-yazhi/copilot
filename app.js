@@ -235,10 +235,10 @@
     var button = document.getElementById('sign-out');
     if (!button) return;
 
-    // No session to tear down yet — the sign-in is simulated. When a real one
-    // lands, clear it here before navigating.
     button.addEventListener('click', function () {
-      window.location.assign('index.html');
+      window.Session.end();
+      // replace() so Back doesn't land on the dashboard after signing out.
+      window.location.replace('index.html');
     });
   }
 

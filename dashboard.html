@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dashboard</title>
   <link rel="stylesheet" href="dashboard.css">
+  <!-- Gate before the body renders, so no dashboard content flashes up first.
+       replace() keeps the gated page out of history, so Back can't return. -->
+  <script src="session.js"></script>
+  <script>
+    if (!window.Session.current()) {
+      window.location.replace('index.html?next=dashboard');
+    }
+  </script>
 </head>
 <body>
   <header class="topbar">

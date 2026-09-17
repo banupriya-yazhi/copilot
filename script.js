@@ -7,7 +7,14 @@ const status = document.getElementById('status');
 const submit = form.querySelector('.submit');
 const togglePassword = document.getElementById('toggle-password');
 
+const remember = document.getElementById('remember');
+
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Arriving here from a gated page — say why rather than leaving it unexplained.
+if (new URLSearchParams(window.location.search).has('next')) {
+  status.textContent = 'Please sign in to continue.';
+}
 
 togglePassword.addEventListener('click', () => {
   const showing = password.type === 'text';
@@ -60,6 +67,13 @@ form.addEventListener('submit', (event) => {
 
   // Stay disabled through the redirect so the form can't be submitted twice.
   setTimeout(() => {
+    if (!Session.start(email.value.trim(), remember.checked)) {
+      // Without storage the dashboard's gate would bounce us straight back.
+      submit.disabled = false;
+      submit.textContent = 'Sign in';
+      status.textContent = 'Browser storage is unavailable, so the session cannot be kept.';
+      return;
+    }
     status.textContent = `Signed in as ${email.value.trim()}. Redirecting…`;
     window.location.assign('dashboard.html');
   }, 700);
