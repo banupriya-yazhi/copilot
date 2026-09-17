@@ -58,10 +58,9 @@ form.addEventListener('submit', (event) => {
   submit.disabled = true;
   submit.textContent = 'Signing in…';
 
+  // Stay disabled through the redirect so the form can't be submitted twice.
   setTimeout(() => {
-    submit.disabled = false;
-    submit.textContent = 'Sign in';
-    status.textContent = `Signed in as ${email.value.trim()}`;
-    form.reset();
+    status.textContent = `Signed in as ${email.value.trim()}. Redirecting…`;
+    window.location.assign('dashboard.html');
   }, 700);
 });
