@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot" aria-hidden="true"></span>
+      <h1>Dashboard</h1>
+    </div>
+    <nav class="nav">
+      <a href="#" class="active">Overview</a>
+      <a href="#">Reports</a>
+      <a href="#">Settings</a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
+      <span data-theme-icon>Dark</span>
+    </button>
+  </header>
+
+  <main class="page">
+    <section class="stats" aria-label="Key metrics">
+      <article class="card stat">
+        <p class="stat-label">Revenue</p>
+        <p class="stat-value" data-metric="revenue">—</p>
+        <p class="stat-delta up">+12.4% <span>vs last month</span></p>
+      </article>
+      <article class="card stat">
+        <p class="stat-label">Active users</p>
+        <p class="stat-value" data-metric="users">—</p>
+        <p class="stat-delta up">+3.1% <span>vs last month</span></p>
+      </article>
+      <article class="card stat">
+        <p class="stat-label">Orders</p>
+        <p class="stat-value" data-metric="orders">—</p>
+        <p class="stat-delta down">−1.8% <span>vs last month</span></p>
+      </article>
+      <article class="card stat">
+        <p class="stat-label">Churn</p>
+        <p class="stat-value" data-metric="churn">—</p>
+        <p class="stat-delta up">−0.4pt <span>vs last month</span></p>
+      </article>
+    </section>
+
+    <section class="card chart-card" aria-label="Revenue over time">
+      <div class="card-head">
+        <h2>Revenue</h2>
+        <p class="muted">Last 12 months</p>
+      </div>
+      <div id="chart" class="chart"></div>
+    </section>
+
+    <section class="card" aria-label="Recent activity">
+      <div class="card-head">
+        <h2>Recent activity</h2>
+        <p class="muted">Latest 6 events</p>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Customer</th>
+            <th scope="col">Event</th>
+            <th scope="col" class="num">Amount</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody id="activity"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
